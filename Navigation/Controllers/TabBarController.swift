@@ -7,32 +7,40 @@
 
 import UIKit
 
+enum Tabs: Int {
+    case feed
+    case profile
+}
+
 final class TabBarViewController: UITabBarController {
     
-//    let navigationControllerFeed = UINavigationController(rootViewController: FeedViewController())
-//
-//    let navigationControllerProfile = UINavigationController(rootViewController: ProfileViewController())
-//    tabBarController.viewControllers = [navigationControllerFeed, navigationControllerProfile]
-    
-    private let feedVC = FeedViewController()
-    private let profileVC = ProfileViewController()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupContollers()
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
+        configure()
     }
-    private func setupContollers() {
-        
-        
-        feedVC.tabBarItem.title = "Feed"
-        feedVC.tabBarItem.image = UIImage(systemName: "bubble.right")
     
-        
-        
-        profileVC.tabBarItem.title = "Profile"
-        profileVC.tabBarItem.image = UIImage(systemName: "person")
-        
-        viewControllers = [feedVC, profileVC]
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    private func configure() {
+        tabBar.backgroundColor = .lightGray
+        
+        let feedVC = FeedViewController()
+        let profileVC = ProfileViewController()
+        
+        let feedNavigation = UINavigationController(rootViewController: feedVC)
+        let profileNavigation = UINavigationController(rootViewController: profileVC)
+        
+        feedNavigation.tabBarItem.title = "Feed"
+        feedNavigation.tabBarItem.image = UIImage(systemName: "bubble.right")
+        
+        profileNavigation.tabBarItem.title = "Profile"
+        profileNavigation.tabBarItem.image = UIImage(systemName: "person")
+        
+        setViewControllers([feedNavigation, profileNavigation], animated: true)
+    }
+    
 }
