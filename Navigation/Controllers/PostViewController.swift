@@ -8,22 +8,19 @@
 import UIKit
 
 class PostViewController: UIViewController {
-
+    
+    var titlePost = "Post Here"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        self.navigationItem.title = titlePost
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(tapAction))
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc private func tapAction() {
+        let infoVC = InfoViewController()
+        present(infoVC, animated: true)
+        
     }
-    */
-
 }
