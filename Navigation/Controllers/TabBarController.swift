@@ -26,7 +26,7 @@ final class TabBarViewController: UITabBarController {
     
     
     private func configure() {
-        tabBar.backgroundColor = .lightGray
+        tabBar.backgroundColor = .systemGray4
         
         let feedVC = FeedViewController()
         let profileVC = ProfileViewController()
