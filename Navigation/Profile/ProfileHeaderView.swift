@@ -9,6 +9,15 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
+    private let newButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemOrange
+        button.setTitle("Useless Button", for: .normal)
+        
+        return button
+    }()
+    
     private var userImageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 130, height: 130))
         imageView.image = UIImage(imageLiteralResourceName: "ovechkin")
@@ -60,6 +69,7 @@ class ProfileHeaderView: UIView {
         addSubview(userImageView)
         addSubview(profileNameLabel)
         addSubview(statusShowButton)
+        addSubview(newButton)
         statusShowButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         constraints()
         
@@ -85,7 +95,11 @@ class ProfileHeaderView: UIView {
             statusShowButton.heightAnchor.constraint(equalToConstant: 50),
             
             statusTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 98),
-            statusTextField.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 25)
+            statusTextField.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 25),
+            
+            newButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            newButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            newButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
         ])
     }
 }
