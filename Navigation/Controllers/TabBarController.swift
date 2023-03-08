@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum Tabs: Int {
-    case feed
-    case profile
-}
 
 final class TabBarViewController: UITabBarController {
     
@@ -29,10 +25,11 @@ final class TabBarViewController: UITabBarController {
         tabBar.backgroundColor = .systemGray4
         
         let feedVC = FeedViewController()
-        let profileVC = ProfileViewController()
+        lazy var profileVC = ProfileViewController()
+        let loginVC = LogInViewController()
         
         let feedNavigation = UINavigationController(rootViewController: feedVC)
-        let profileNavigation = UINavigationController(rootViewController: profileVC)
+        let profileNavigation = UINavigationController(rootViewController: loginVC)
         
         feedNavigation.tabBarItem.title = "Feed"
         feedNavigation.tabBarItem.image = UIImage(systemName: "bubble.right")
